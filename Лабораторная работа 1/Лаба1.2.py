@@ -1,13 +1,18 @@
-numbers = [2, -93, -2, 8, None, -44, -1, -85, -14, 90, -22, -90, -100, -8, 38, -92, -45, 67, 53, 25]
+# TODO Найдите количество книг, которое можно разместить на дискете
+# Дано
+pages = 100
+lines_per_page = 50
+chars_per_line = 25
+bytes_per_char = 4
+disk_size_mb = 1.44
 
-# TODO заменить значение пропущенного элемента средним арифметическим
+# Переводим объем дискеты в байты
+disk_size_bytes = disk_size_mb * 1024 * 1024
 
-missing_index = numbers.index(None)
+# Вычисляем объем одной книги в байтах
+book_size_bytes = pages * lines_per_page * chars_per_line * bytes_per_char
 
-total_sum = sum(num for num in numbers if num is not None)
+# Вычисляем, сколько книг поместится на дискету
+books_on_disk = disk_size_bytes // book_size_bytes
 
-average = total_sum / len(numbers)
-
-numbers[missing_index] = average
-
-print("Измененный список:", numbers)
+print("Количество книг, помещающихся на дискету:", int(books_on_disk))
